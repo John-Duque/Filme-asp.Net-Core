@@ -24,14 +24,15 @@ namespace FilmesAPI.Controllers
         public IActionResult AdicionaFilme([FromBody] Filme filme) //FromBody Serve para usar os dados que seram enviados pelo meu body 
         {
             _contenxt.Add(filme);
+            _contenxt.SaveChanges();// Para salvar as alterações que foram feitas
             return CreatedAtAction(nameof(recuperarFilmePorId), new { Id = filme.Id}, filme);
         }
 
         [HttpGet]
-        public IActionResult recuperaFilmes()
+        public IEnumerable<Filme> recuperaFilmes()
         {
             //ira returnar todo o conjunto de dados de filme
-            return Ok(_contenxt.Filmes);
+            return _contenxt.Filmes;
         }
 
         [HttpGet("{id}")] //PPara conseguirmos colocar params na URL
