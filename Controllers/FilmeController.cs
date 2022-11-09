@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc; // Serve para conseguirmos usar algumas anotações expecificas do http
 using FilmesAPI.models;
-using FilmesAPI.Data; 
+using FilmesAPI.Data;
 
 namespace FilmesAPI.Controllers
 {
@@ -25,7 +25,7 @@ namespace FilmesAPI.Controllers
         {
             _contenxt.Add(filme);
             _contenxt.SaveChanges();// Para salvar as alterações que foram feitas
-            return CreatedAtAction(nameof(recuperarFilmePorId), new { Id = filme.Id}, filme);
+            return CreatedAtAction(nameof(recuperarFilmePorId), new { Id = filme.Id }, filme);
         }
 
         [HttpGet]
@@ -47,6 +47,36 @@ namespace FilmesAPI.Controllers
             }
 
             return NotFound();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult atualizaFilme(int id, [FromBody] Filme filmeNovo)
+        {
+            Filme filme = _contenxt.Filmes.FirstOrDefault(filme => filme.Id == id);
+            if (filme == null)
+            {
+                return NotFound();
+            }
+            filme.Titulo = filmeNovo.Titulo;
+            filme.Genero = filmeNovo.Genero;
+            filme.Duracao = filmeNovo.Duracao;
+            filme.Diretor = filmeNovo.Diretor;
+            _contenxt.SaveChanges();
+            return NoContent();
+
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult deletaFilme(int id)
+        {
+            Filme filme = _contenxt.Filmes.FirstOrDefault(filme => filme.Id == id);
+            if (filme == null)
+            {
+                return NotFound();
+            }
+            _contenxt.Remove(filme);
+            _contenxt.SaveChanges();
+            return NoContent();
         }
     }
 }
