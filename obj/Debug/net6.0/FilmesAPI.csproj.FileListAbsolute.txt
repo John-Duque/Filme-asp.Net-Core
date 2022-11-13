@@ -34,3 +34,5 @@
 /home/john/Documents/FilmesAPI/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
 /home/john/Documents/FilmesAPI/bin/Debug/net6.0/MySqlConnector.dll
 /home/john/Documents/FilmesAPI/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+/home/john/Documents/FilmesAPI/bin/Debug/net6.0/AutoMapper.dll
+/home/john/Documents/FilmesAPI/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
