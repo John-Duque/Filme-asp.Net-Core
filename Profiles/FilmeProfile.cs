@@ -15,7 +15,8 @@ namespace FilmesAPI.Profiles
             CreateMap<CreateFilmeDto, Filme>();
             CreateMap<Filme, ReadFilmeDto>();
             CreateMap<UpdateFilmeDto, Filme>(); 
-
+            //CreateMap<ProcessoEmail, Processoview>().ForMember(dest => dest.Id,opt.MapFrom(src.Id))
+            //.ForMember(dest => dest.RotinasPropriedades, opt => opt.Ignore());
         }
     }
 }
